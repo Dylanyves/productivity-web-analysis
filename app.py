@@ -41,8 +41,7 @@ class Sidebar:
                     db.insert_data(data)
 
                     # Succes message
-                    success_message = '<p style="color:white;background:green;padding:10px 14px;border-radius:5px"> Success! </p>'
-                    st.write(success_message, unsafe_allow_html=True)
+                    st.success('Data added!')
 
                 # Line separator
                 st.write('---')
@@ -61,11 +60,9 @@ class Sidebar:
 
                     if id_input in ids:
                         db.delete_data(id_input)
-                        delete_message = '<p style="color:white;background:red;padding:10px 14px;border-radius:5px"> Row deleted! </p>'
-                        st.write(delete_message, unsafe_allow_html=True)
+                        st.success('Row deleted!')
                     else:
-                        delete_message = '<p style="color:red">Invalid ID</p>'
-                        st.write(delete_message, unsafe_allow_html=True)
+                        st.error('Invalid ID')
 
 
                 # Line separator
@@ -86,9 +83,9 @@ class Sidebar:
                             db.delete_table()
                             st.write('Table deleted!')
                         except:
-                            st.write('There is no table to be deleted')
+                            st.error('There is no table to be deleted')
                     else:
-                        st.write('Invalid input') 
+                        st.error('Inavlid Input') 
 
 
 sidebar = Sidebar
@@ -109,7 +106,7 @@ class Content:
             st.text(f'Table dimension: {df.shape}')
             st.write('---')
         except:
-            st.text('There is no data to be displayed. Go input some data!')
+            st.warning('There is no data to be displayed. Go input some data!')
 
     def line_charts():
         try:
@@ -151,8 +148,7 @@ class Content:
             st.markdown('---')
 
         except:
-            e = 'There is no data to be displayed. Go input some data!'
-            st.text(e)
+            st.warning('There is no data to be displayed. Go input some data!')
 
 
     def bar_chart():
@@ -173,8 +169,7 @@ class Content:
             filtered_df = df[df.Year == year_input]
             vis = Visualization(filtered_df)
             fig = vis.bar_chart(y_input)
-            # st.plotly_chart(fig, use_container_width=True)
-            st.write(fig)
+            st.plotly_chart(fig, use_container_width=True)
         except:
             pass
 

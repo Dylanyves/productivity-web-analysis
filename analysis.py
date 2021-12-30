@@ -57,7 +57,7 @@ class Visualization:
                 y_axes.append(avg[key])
             else:
                 y_axes.append(0)
-        fig = px.bar(x=months, y=y_axes, labels={'y':y})
+        fig = px.bar(x=months, y=y_axes, labels={'y':y+' (Average)'})
         fig.update_layout(
             font_color='blue'
         )
