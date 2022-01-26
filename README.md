@@ -4,3 +4,5 @@ On this website you can input your study duration, workout duration, and your sa
 Link to the website --> [link](https://share.streamlit.io/dylanyves/productivity-web-analysis/app.py)
 
 ![](images/picture-1.png)
+![](images/picture-2.png)
+![](images/picture-3.png)
