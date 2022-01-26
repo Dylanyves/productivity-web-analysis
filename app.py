@@ -101,7 +101,7 @@ class Content:
             database = Database
             df = database.feature_engineering()
             df = df[['ID', 'Date', 'Study(hr)', 'Study(min)', 'Workout(min)', 'Description', 'Satisfaction']].reset_index(drop=True)
-            st.write(df)
+            st.dataframe(df)
 
             st.text(f'Table dimension: {df.shape}')
             st.write('---')
@@ -168,8 +168,10 @@ class Content:
             
             filtered_df = df[df.Year == year_input]
             vis = Visualization(filtered_df)
+            
             fig = vis.bar_chart(y_input)
             st.plotly_chart(fig, use_container_width=True)
+            
         except:
             pass
 
